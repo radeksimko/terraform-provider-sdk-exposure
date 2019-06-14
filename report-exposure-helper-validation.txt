@@ -1,0 +1,5 @@
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-arukas/arukas/resource_arukas_container.go:IntBetween
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-arukas/arukas/resource_arukas_container.go:StringInSlice
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-arukas/arukas/resource_arukas_container.go:StringInSlice
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-arukas/arukas/resource_arukas_container.go:IntBetween
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-arukas/arukas/resource_arukas_container.go:StringLenBetween

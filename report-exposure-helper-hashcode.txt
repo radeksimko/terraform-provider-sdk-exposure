@@ -1,0 +1,1 @@
+/Users/radeksimko/gopath/src/github.com/terraform-providers/terraform-provider-archive/archive/data_source_archive_file.go:String
