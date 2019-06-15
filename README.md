@@ -424,14 +424,33 @@ Full report: `report-exposure-plugin.txt`.
 ### `helper/validation`
 
 ```
-
+1437 StringInSlice
+ 318 IntBetween
+ 207 StringLenBetween
+ 182 NoZeroValues
+ 144 IntAtLeast
+  86 StringMatch
+  62 ValidateJsonString
+  19 ValidateRegexp
+  17 SingleIP
+  15 ValidateRFC3339TimeString
+  15 CIDRNetwork
+  11 IntAtMost
+   6 IntInSlice
+   4 Any
+   4 All
 ```
+
+Full report: `report-exposure-helper-validation.txt`.
 
 ### `helper/hashcode`
 
 ```
-
+ 328 String
+   3 Strings
 ```
+
+Full report: `report-exposure-helper-hashcode.txt`.
 
 ### `helper/resource`
 
@@ -464,26 +483,39 @@ Full report: `report-exposure-helper-resource.txt`.
 ### `helper/logging`
 
 ```
-
+  20 NewTransport
+   9 IsDebugOrHigher
 ```
+
+Full report: `report-exposure-helper-logging.txt`.
 
 ### `helper/mutexkv`
 
 ```
-
+  13 NewMutexKV
 ```
+
+Full report: `report-exposure-helper-mutexkv.txt`.
 
 ### `helper/structure`
 
 ```
-
+  56 NormalizeJsonString
+  22 SuppressJsonDiff
+  19 ExpandJsonFromString
+  15 FlattenJsonToString
 ```
+
+Full report: `report-exposure-helper-structure.txt`.
 
 ### `helper/pathorcontents`
 
 ```
-
+ 19 Read
 ```
+
+Full report: `report-exposure-helper-pathorcontents.txt`.
+
 
 ### `helper/customdiff`
 
@@ -509,4 +541,4 @@ Full report: `report-exposure-helper-resource.txt`.
 
 ```
 
-Full report: `...`.
+Full report: ``.
