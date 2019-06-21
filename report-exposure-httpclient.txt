@@ -1,0 +1,7 @@
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-azuread/azuread/config.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-azurerm/azurerm/config.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-cloudflare/cloudflare/provider.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-fastly/fastly/config.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-google/google/config.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-google-beta/google-beta/config.go:UserAgentString
+/home/katy/dev/go/src/github.com/terraform-providers/terraform-provider-linode/linode/provider.go:UserAgentString

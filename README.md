@@ -541,25 +541,38 @@ Full report: `report-exposure-helper-pathorcontents.txt`.
 ### `helper/customdiff`
 
 ```
-
+26 All
+13 ForceNewIfChange
+11 Sequence
+8 ValidateChange
+3 ComputedIf
+2 If
+1 ForceNewIf
 ```
+
+Full report: `report-exposure-helper-customdiff.txt`.
 
 ### `httpclient`
 
 ```
-
+7 UserAgentString
 ```
+
+Full report: `report-exposure-httpclient.txt`.
 
 ### `helper/encryption`
 
 ```
-
+6 RetrieveGPGKey
+6 EncryptValue
 ```
+
+Full report: `report-exposure-helper-encryption.txt`.
 
 ### `helper/acctest`
 
 ```
-
+8 RandStringFromCharSet
 ```
 
-Full report: ``.
+Full report: `report-exposure-helper-acctest.txt`.
