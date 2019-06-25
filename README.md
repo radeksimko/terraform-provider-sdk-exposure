@@ -340,6 +340,27 @@ golang.org/x/crypto/ssh
 
 Which parts of each package are actually in use by providers?
 
+### Methodology
+
+Assuming all providers are cloned into `$GOPATH/src/github.com/terraform-providers/`:
+
+#### Create report of all uses of a package
+
+For package `helper/schema` as below:
+
+```sh
+for f in $GOPATH/src/github.com/terraform-providers/*; do ./list-package-refs.sh $f github.com/hashicorp/terraform/helper/schema; done > report-exposure-helper-schema.txt
+```
+
+#### Count by exported name
+
+For package `helper/schema` as below, assuming `report-exposure-helper-schema.txt` has been created:
+
+```sh
+awk -F ":" '{a[$2]++}END{for(i in a)  print a[i],i}' report-exposure-helper-schema.txt | sort -r -g
+```
+
+
 ### `helper/schema`
 
 ```
@@ -520,25 +541,38 @@ Full report: `report-exposure-helper-pathorcontents.txt`.
 ### `helper/customdiff`
 
 ```
-
+26 All
+13 ForceNewIfChange
+11 Sequence
+8 ValidateChange
+3 ComputedIf
+2 If
+1 ForceNewIf
 ```
+
+Full report: `report-exposure-helper-customdiff.txt`.
 
 ### `httpclient`
 
 ```
-
+7 UserAgentString
 ```
+
+Full report: `report-exposure-httpclient.txt`.
 
 ### `helper/encryption`
 
 ```
-
+6 RetrieveGPGKey
+6 EncryptValue
 ```
+
+Full report: `report-exposure-helper-encryption.txt`.
 
 ### `helper/acctest`
 
 ```
-
+8 RandStringFromCharSet
 ```
 
-Full report: ``.
+Full report: `report-exposure-helper-acctest.txt`.
