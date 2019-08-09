@@ -112,23 +112,25 @@ terraform-provider-yandex
 Which packages from `github.com/hashicorp/terraform` are imported by providers?
 
 ```
- 159 github.com/hashicorp/terraform/helper/schema
-  94 github.com/hashicorp/terraform/terraform
-  88 github.com/hashicorp/terraform/plugin
+ 244 github.com/hashicorp/terraform/helper/schema
+ 175 github.com/hashicorp/terraform/terraform
+ 125 github.com/hashicorp/terraform/helper/resource
+  86 github.com/hashicorp/terraform/plugin
   54 github.com/hashicorp/terraform/helper/validation
-  49 github.com/hashicorp/terraform/helper/hashcode
-  42 github.com/hashicorp/terraform/helper/resource
-  25 github.com/hashicorp/terraform/helper/logging
-  13 github.com/hashicorp/terraform/helper/mutexkv
+  51 github.com/hashicorp/terraform/helper/hashcode
+  49 github.com/hashicorp/terraform/helper/acctest
+  24 github.com/hashicorp/terraform/helper/logging
+  14 github.com/hashicorp/terraform/helper/mutexkv
+  12 github.com/hashicorp/terraform/helper/pathorcontents
   10 github.com/hashicorp/terraform/helper/structure
-   8 github.com/hashicorp/terraform/helper/pathorcontents
-   8 github.com/hashicorp/terraform/helper/customdiff
-   7 github.com/hashicorp/terraform/httpclient
-   4 github.com/hashicorp/terraform/helper/encryption
-   2 github.com/hashicorp/terraform/helper/acctest
+  10 github.com/hashicorp/terraform/helper/customdiff
+   6 github.com/hashicorp/terraform/httpclient
+   5 github.com/hashicorp/terraform/helper/encryption
 
-   2 github.com/hashicorp/terraform/flatmap
-   1 github.com/hashicorp/terraform/svchost/disco
+   9 github.com/hashicorp/terraform/config
+   1 github.com/hashicorp/terraform/configs/configschema
+   3 github.com/hashicorp/terraform/flatmap
+   2 github.com/hashicorp/terraform/svchost/disco
    1 github.com/hashicorp/terraform/svchost/auth
    1 github.com/hashicorp/terraform/svchost
    1 github.com/hashicorp/terraform/lang
