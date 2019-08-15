@@ -3,7 +3,7 @@ set -e
 
 REPO_PATH=$1
 PKG_PATH=$2
-GOREFS="$GOPATH/bin/go-refs"
+GOREFS="$(go env GOPATH)/bin/go-refs"
 
 cd $REPO_PATH
 
