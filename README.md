@@ -351,7 +351,9 @@ Assuming all providers are cloned into `$GOPATH/src/github.com/terraform-provide
 For package `helper/schema` as below:
 
 ```sh
-for f in $GOPATH/src/github.com/terraform-providers/*; do ./list-package-refs.sh $f github.com/hashicorp/terraform/helper/schema; done > report-exposure-helper-schema.txt
+ls -d $GOPATH/src/github.com/terraform-providers/* \
+  | xargs -I{} ./list-package-refs.sh {} github.com/hashicorp/terraform/helper/schema \
+  > report-exposure-helper-schema.txt
 ```
 
 #### Count by exported name
@@ -359,7 +361,7 @@ for f in $GOPATH/src/github.com/terraform-providers/*; do ./list-package-refs.sh
 For package `helper/schema` as below, assuming `report-exposure-helper-schema.txt` has been created:
 
 ```sh
-awk -F ":" '{a[$2]++}END{for(i in a)  print a[i],i}' report-exposure-helper-schema.txt | sort -r -g
+awk -F: '{print $2}' report-exposure-helper-schema.txt | sort | uniq -c | sort -r -n
 ```
 
 
