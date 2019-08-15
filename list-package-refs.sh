@@ -3,6 +3,7 @@ set -e
 
 REPO_PATH=$1
 PKG_PATH=$2
+GOREFS="$GOPATH/bin/go-refs"
 
 cd $REPO_PATH
 
@@ -13,7 +14,7 @@ MATCHED_BUILD_FILES=$(go list -json ./... \
 	| xargs -I{} go list -json {} \
 	| jq -r "select((.Imports | length) > 0) | select(.Imports[] == \"${PKG_PATH}\") | .Match[]")
 
-echo "$MATCHED_BUILD_FILES" | xargs -I{} go-refs -printfile -pkg $PKG_PATH {}
+echo "$MATCHED_BUILD_FILES" | xargs -I{} $GOREFS -printfile -pkg $PKG_PATH {}
 
 echo "$(date '+%Y/%m/%d %H:%M:%S') Processing test imports of $REPO_PATH ..." >/dev/stderr
 
@@ -22,4 +23,4 @@ MATCHED_TEST_FILES=$(go list -json ./... \
 	| xargs -I{} go list -json {} \
 	| jq -r "select((.TestImports | length) > 0) | select(.TestImports[] == \"${PKG_PATH}\") | .Match[]")
 
-echo "$MATCHED_TEST_FILES" | xargs -I{} go-refs -printfile -pkg $PKG_PATH {}
+echo "$MATCHED_TEST_FILES" | xargs -I{} $GOREFS -printfile -pkg $PKG_PATH {}
