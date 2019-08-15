@@ -7,7 +7,7 @@ GOREFS="$(go env GOPATH)/bin/go-refs"
 
 cd $REPO_PATH
 
-echo "$(date '+%Y/%m/%d %H:%M:%S') Processing build imports of $REPO_PATH ..." >/dev/stderr
+echo "$(date '+%Y/%m/%d %H:%M:%S') Processing build imports of $REPO_PATH ..."
 
 MATCHED_BUILD_FILES=$(go list -json ./... \
 	| jq -r 'select((.GoFiles | length) > 0) | (.Dir + "/" + .GoFiles[])' \
@@ -16,7 +16,7 @@ MATCHED_BUILD_FILES=$(go list -json ./... \
 
 echo "$MATCHED_BUILD_FILES" | xargs -I{} $GOREFS -printfile -pkg $PKG_PATH {}
 
-echo "$(date '+%Y/%m/%d %H:%M:%S') Processing test imports of $REPO_PATH ..." >/dev/stderr
+echo "$(date '+%Y/%m/%d %H:%M:%S') Processing test imports of $REPO_PATH ..."
 
 MATCHED_TEST_FILES=$(go list -json ./... \
 	| jq -r 'select((.TestGoFiles | length) > 0) | (.Dir + "/" + .TestGoFiles[])' \
