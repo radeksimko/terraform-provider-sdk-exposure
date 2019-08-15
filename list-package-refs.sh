@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 REPO_PATH=$1
 PKG_PATH=$2
 
