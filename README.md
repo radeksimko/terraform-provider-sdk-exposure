@@ -351,9 +351,7 @@ Assuming all providers are cloned into `$GOPATH/src/github.com/terraform-provide
 For package `helper/schema` as below:
 
 ```sh
-ls -d $GOPATH/src/github.com/terraform-providers/* \
-  | xargs -I{} ./list-package-refs.sh {} github.com/hashicorp/terraform/helper/schema \
-  > report-exposure-helper-schema.txt
+ls -d ../terraform-providers/* | xargs -I{} ./list-package-refs.sh {} github.com/hashicorp/terraform/helper/schema > report-exposure-helper-schema.txt
 ```
 
 #### Count by exported name
@@ -368,58 +366,61 @@ awk -F: '{print $2}' report-exposure-helper-schema.txt | sort | uniq -c | sort -
 ### `helper/schema`
 
 ```
-28407 TypeString
-16840 ResourceData
-11417 Schema
-10340 Resource
-3981 TypeList
-3670 TypeInt
-3143 TypeBool
-2837 Set
-1785 ResourceImporter
-1774 TypeSet
-1323 ImportStatePassthrough
-1130 DefaultTimeout
-1073 TypeMap
- 909 HashString
- 619 TimeoutCreate
- 530 TimeoutDelete
- 470 ResourceTimeout
- 465 TimeoutUpdate
- 420 EnvDefaultFunc
- 417 NewSet
- 165 TypeFloat
- 146 SchemaValidateFunc
- 113 ResourceDiff
-  98 Provider
-  39 MultiEnvDefaultFunc
-  39 HashResource
-  28 SchemaConfigModeAttr
-  15 StateFunc
-  15 SchemaDiffSuppressFunc
-  15 ReadFunc
-  14 DeleteFunc
-  11 SerializeResourceForHash
-  11 Noop
-  11 CreateFunc
-   9 UpdateFunc
-   8 TimeoutRead
-   8 SchemaDefaultFunc
-   7 RemoveFromState
-   6 ConfigureFunc
-   5 SchemaSetFunc
-   5 MapFieldReader
-   5 BasicMapReader
-   4 ValueType
-   4 StateUpgrader
-   4 MapFieldWriter
-   4 HashInt
-   4 DataSourceResourceShim
-   3 HashSchema
-   2 DefaultFunc
-   1 Label
-   1 Equal
-   1 CopySet
+  30659 TypeString
+  18293 ResourceData
+  12696 Schema
+  11251 Resource
+   4408 TypeList
+   4043 TypeInt
+   3401 TypeBool
+   3069 Set
+   1941 ResourceImporter
+   1893 TypeSet
+   1439 ImportStatePassthrough
+   1288 DefaultTimeout
+   1219 TypeMap
+   1046 HashString
+    685 TimeoutCreate
+    572 TimeoutDelete
+    524 NewSet
+    521 ResourceTimeout
+    518 TimeoutUpdate
+    463 Provider
+    416 EnvDefaultFunc
+    175 TypeFloat
+    169 SchemaValidateFunc
+    128 ResourceDiff
+    127 MultiEnvDefaultFunc
+     60 TestResourceDataRaw
+     51 HashResource
+     36 SchemaConfigModeAttr
+     27 TimeoutRead
+     16 SchemaDiffSuppressFunc
+     15 StateFunc
+     15 ReadFunc
+     14 DeleteFunc
+     12 SerializeResourceForHash
+     12 Noop
+     11 CreateFunc
+     10 RemoveFromState
+      9 UpdateFunc
+      8 StateUpgrader
+      8 SchemaDefaultFunc
+      7 ConfigureFunc
+      5 SchemaSetFunc
+      5 MapFieldReader
+      5 HashSchema
+      5 HashInt
+      5 BasicMapReader
+      4 ValueType
+      4 MapFieldWriter
+      4 DataSourceResourceShim
+      2 DefaultFunc
+      1 ResourceTypes
+      1 Label
+      1 Equal
+      1 DataSources
+      1 CopySet
 ```
 
 Full report: `report-exposure-helper-schema.txt`.
@@ -427,12 +428,16 @@ Full report: `report-exposure-helper-schema.txt`.
 ### `terraform`
 
 ```
- 328 InstanceState
-  93 ResourceProvider
-  16 VersionString
-  13 State
-   5 UserAgentString
-   2 ResourceState
+   7651 State
+    611 ResourceProvider
+    472 InstanceState
+     33 NewResourceConfig
+     17 VersionString
+     14 ResourceState
+      7 ResourceProviderFactory
+      5 UserAgentString
+      2 ProviderSchemaRequest
+      1 ResourceConfig
 ```
 
 Full report: `report-exposure-terraform.txt`.
@@ -440,8 +445,10 @@ Full report: `report-exposure-terraform.txt`.
 ### `plugin`
 
 ```
-  88 ServeOpts
-  88 Serve
+     87 ServeOpts
+     87 Serve
+      1 VersionedPlugins
+      1 DefaultProtocolVersion
 ```
 
 Full report: `report-exposure-plugin.txt`.
@@ -449,21 +456,22 @@ Full report: `report-exposure-plugin.txt`.
 ### `helper/validation`
 
 ```
-1437 StringInSlice
- 318 IntBetween
- 207 StringLenBetween
- 182 NoZeroValues
- 144 IntAtLeast
-  86 StringMatch
-  62 ValidateJsonString
-  19 ValidateRegexp
-  17 SingleIP
-  15 ValidateRFC3339TimeString
-  15 CIDRNetwork
-  11 IntAtMost
-   6 IntInSlice
-   4 Any
-   4 All
+   1557 StringInSlice
+    339 IntBetween
+    226 StringLenBetween
+    186 NoZeroValues
+    148 IntAtLeast
+     95 StringMatch
+     62 ValidateJsonString
+     19 ValidateRegexp
+     19 SingleIP
+     18 ValidateRFC3339TimeString
+     16 CIDRNetwork
+     12 IntInSlice
+     10 IntAtMost
+      7 All
+      5 Any
+      1 FloatBetween
 ```
 
 Full report: `report-exposure-helper-validation.txt`.
@@ -471,8 +479,8 @@ Full report: `report-exposure-helper-validation.txt`.
 ### `helper/hashcode`
 
 ```
- 328 String
-   3 Strings
+    342 String
+      3 Strings
 ```
 
 Full report: `report-exposure-helper-hashcode.txt`.
@@ -480,27 +488,49 @@ Full report: `report-exposure-helper-hashcode.txt`.
 ### `helper/resource`
 
 ```
- 835 StateChangeConf
- 638 NonRetryableError
- 602 RetryableError
- 600 RetryError
- 588 Retry
- 443 StateRefreshFunc
- 106 PrefixedUniqueId
-  80 UniqueId
-  18 UniqueIDSuffixLength
-  18 NotFoundError
-   5 TestCheckFunc
-   5 RetryFunc
-   2 TimeoutError
-   2 Schema
-   1 TestEnvVar
-   1 ResourceType
-   1 ResourceId
-   1 PathPart
-   1 Path
-   1 ParentId
-   1 Id
+  39820 TestCheckResourceAttr
+  13141 ComposeTestCheckFunc
+  11766 TestStep
+  11525 TestCase
+   7061 TestCheckResourceAttrSet
+   6181 Test
+   5303 ParallelTest
+   4374 TestCheckFunc
+   1828 ComposeAggregateTestCheckFunc
+    929 TestMatchResourceAttr
+    899 StateChangeConf
+    842 TestCheckResourceAttrPair
+    749 NonRetryableError
+    740 RetryableError
+    719 RetryError
+    707 Retry
+    459 StateRefreshFunc
+    348 TestCheckNoResourceAttr
+    279 Sweeper
+    279 AddTestSweepers
+    160 TestCheckResourceAttrPtr
+    117 PrefixedUniqueId
+     90 UniqueId
+     76 TestEnvVar
+     41 UnitTest
+     37 ImportStateIdFunc
+     32 Primary
+     19 NotFoundError
+     18 UniqueIDSuffixLength
+     17 TestMain
+     14 DisplayName
+      9 TestCheckOutput
+      5 RetryFunc
+      4 Type
+      4 Attributes
+      3 UniqueIdPrefix
+      3 TimeoutError
+      2 Schema
+      2 ID
+      1 TestMatchOutput
+      1 ResourceType
+      1 ResourceId
+      1 Path
 ```
 
 Full report: `report-exposure-helper-resource.txt`.
@@ -508,8 +538,10 @@ Full report: `report-exposure-helper-resource.txt`.
 ### `helper/logging`
 
 ```
-  20 NewTransport
-   9 IsDebugOrHigher
+     20 NewTransport
+      9 IsDebugOrHigher
+      1 LogOutput
+      1 LogLevel
 ```
 
 Full report: `report-exposure-helper-logging.txt`.
@@ -517,7 +549,7 @@ Full report: `report-exposure-helper-logging.txt`.
 ### `helper/mutexkv`
 
 ```
-  13 NewMutexKV
+     14 NewMutexKV
 ```
 
 Full report: `report-exposure-helper-mutexkv.txt`.
@@ -525,10 +557,10 @@ Full report: `report-exposure-helper-mutexkv.txt`.
 ### `helper/structure`
 
 ```
-  56 NormalizeJsonString
-  22 SuppressJsonDiff
-  19 ExpandJsonFromString
-  15 FlattenJsonToString
+     58 NormalizeJsonString
+     22 SuppressJsonDiff
+     19 ExpandJsonFromString
+     16 FlattenJsonToString
 ```
 
 Full report: `report-exposure-helper-structure.txt`.
@@ -536,7 +568,7 @@ Full report: `report-exposure-helper-structure.txt`.
 ### `helper/pathorcontents`
 
 ```
- 19 Read
+     23 Read
 ```
 
 Full report: `report-exposure-helper-pathorcontents.txt`.
@@ -545,13 +577,13 @@ Full report: `report-exposure-helper-pathorcontents.txt`.
 ### `helper/customdiff`
 
 ```
-26 All
-13 ForceNewIfChange
-11 Sequence
-8 ValidateChange
-3 ComputedIf
-2 If
-1 ForceNewIf
+     30 All
+     18 ForceNewIfChange
+     13 Sequence
+     11 ValidateChange
+      5 ComputedIf
+      2 If
+      2 ForceNewIf
 ```
 
 Full report: `report-exposure-helper-customdiff.txt`.
@@ -559,7 +591,7 @@ Full report: `report-exposure-helper-customdiff.txt`.
 ### `httpclient`
 
 ```
-7 UserAgentString
+      8 UserAgentString
 ```
 
 Full report: `report-exposure-httpclient.txt`.
@@ -567,8 +599,8 @@ Full report: `report-exposure-httpclient.txt`.
 ### `helper/encryption`
 
 ```
-6 RetrieveGPGKey
-6 EncryptValue
+      7 RetrieveGPGKey
+      7 EncryptValue
 ```
 
 Full report: `report-exposure-helper-encryption.txt`.
@@ -576,7 +608,14 @@ Full report: `report-exposure-helper-encryption.txt`.
 ### `helper/acctest`
 
 ```
-8 RandStringFromCharSet
+   4412 RandString
+   1699 RandInt
+   1340 RandomWithPrefix
+    436 RandStringFromCharSet
+    393 CharSetAlphaNum
+     57 RandIntRange
+     33 RandSSHKeyPair
+     30 CharSetAlpha
 ```
 
 Full report: `report-exposure-helper-acctest.txt`.
