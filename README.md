@@ -151,9 +151,8 @@ These are just **direct imports**, **not transitive** dependencies.
 ### `helper/schema`
 
 ```
-github.com/hashicorp/terraform/config
-github.com/hashicorp/terraform/config/hcl2shim
 github.com/hashicorp/terraform/configs/configschema
+github.com/hashicorp/terraform/configs/hcl2shim
 github.com/hashicorp/terraform/helper/hashcode
 github.com/hashicorp/terraform/terraform
 github.com/hashicorp/terraform/tfdiags
@@ -173,12 +172,10 @@ github.com/zclconf/go-cty/cty/json
 ```
 github.com/hashicorp/terraform/addrs
 github.com/hashicorp/terraform/config
-github.com/hashicorp/terraform/config/hcl2shim
-github.com/hashicorp/terraform/config/module
 github.com/hashicorp/terraform/configs
 github.com/hashicorp/terraform/configs/configschema
+github.com/hashicorp/terraform/configs/hcl2shim
 github.com/hashicorp/terraform/dag
-github.com/hashicorp/terraform/flatmap
 github.com/hashicorp/terraform/helper/didyoumean
 github.com/hashicorp/terraform/httpclient
 github.com/hashicorp/terraform/lang
@@ -200,12 +197,9 @@ github.com/hashicorp/errwrap
 github.com/hashicorp/go-multierror
 github.com/hashicorp/go-uuid
 github.com/hashicorp/go-version
-github.com/hashicorp/hcl
 github.com/hashicorp/hcl2/hcl
 github.com/hashicorp/hcl2/hcl/hclsyntax
 github.com/hashicorp/hcl2/hcldec
-github.com/hashicorp/hil
-github.com/hashicorp/hil/ast
 github.com/mitchellh/copystructure
 github.com/mitchellh/reflectwalk
 github.com/zclconf/go-cty/cty
@@ -252,10 +246,9 @@ Only stdlib dependencies.
 ```
 github.com/hashicorp/terraform/addrs
 github.com/hashicorp/terraform/command/format
-github.com/hashicorp/terraform/config
-github.com/hashicorp/terraform/config/hcl2shim
 github.com/hashicorp/terraform/configs
 github.com/hashicorp/terraform/configs/configload
+github.com/hashicorp/terraform/configs/hcl2shim
 github.com/hashicorp/terraform/helper/config
 github.com/hashicorp/terraform/helper/logging
 github.com/hashicorp/terraform/helper/plugin
@@ -335,6 +328,7 @@ github.com/hashicorp/vault/helper/pgpkeys
 ### `helper/acctest`
 
 ```
+github.com/apparentlymart/go-cidr/cidr
 golang.org/x/crypto/ssh
 ```
 
