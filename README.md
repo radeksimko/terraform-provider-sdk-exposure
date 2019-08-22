@@ -639,3 +639,15 @@ Full report: `report-exposure-helper-encryption.txt`.
 ```
 
 Full report: `report-exposure-helper-acctest.txt`.
+
+### `config`
+
+```
+  24 NewRawConfig
+   3 Plaintext
+   2 Endpoint
+   1 LoadAndValidate
+   1 Insecure
+```
+
+Full report: `report-exposure-config.txt`.
